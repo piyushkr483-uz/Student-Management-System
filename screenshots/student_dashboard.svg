@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect x="20" y="20" width="260" height="660" rx="10" fill="#0056b3"/>
+  <text x="40" y="60" font-family="Arial" font-size="20" fill="#fff">Student Portal</text>
+  <rect x="310" y="40" width="850" height="100" rx="8" fill="#fff" stroke="#eef5ff"/>
+  <text x="330" y="100" font-family="Arial" font-size="22" fill="#333">Student Dashboard — Grades & Performance</text>
+
+  <g transform="translate(320,160)">
+    <rect width="800" height="420" rx="8" fill="#fff" stroke="#eef5ff"/>
+    <text x="20" y="40" font-size="18" fill="#333">Recent Grades</text>
+    <rect x="20" y="70" width="740" height="40" rx="6" fill="#f7fbff"/>
+    <text x="40" y="96" font-size="16" fill="#333">English — 90 — Quiz — Teacher</text>
+    <rect x="20" y="120" width="740" height="40" rx="6" fill="#f7fbff"/>
+    <text x="40" y="146" font-size="16" fill="#333">Math — 85 — Exam — Teacher</text>
+  </g>
+</svg>

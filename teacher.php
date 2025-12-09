@@ -33,25 +33,29 @@ $students = $students_stmt->fetchAll();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .sidebar {
-            background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+            background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
             color: white;
             min-height: 100vh;
             padding: 0;
         }
         .sidebar .nav-link {
-            color: white;
+            color: rgba(255,255,255,0.85);
             padding: 1rem 1.5rem;
             border-left: 4px solid transparent;
+            transition: all 0.2s ease;
         }
         .sidebar .nav-link:hover, .sidebar .nav-link.active {
-            background: rgba(255,255,255,0.1);
-            border-left-color: white;
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border-left-color: #14b8a6;
         }
         .grade-card {
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            border: none;
         }
         .grade-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -62,35 +66,35 @@ $students = $students_stmt->fetchAll();
             <div class="col-md-3 col-lg-2 sidebar">
                 <div class="d-flex flex-column p-3">
                     <div class="text-center mb-4">
-                        <i class="fas fa-chalkboard-user fa-2x mb-2"></i>
-                        <h5>Teacher Portal</h5>
+                        <i class="fas fa-person-chalkboard fa-2x mb-2"></i>
+                        <h5 style="margin-bottom: 0.5rem; font-weight: 600;">Instructor Panel</h5>
                         <small><?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></small>
                     </div>
                     
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
-                                <i class="fas fa-chart-line me-2"></i>Dashboard
+                                <i class="fas fa-home me-2"></i>Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#my_students" data-bs-toggle="tab">
-                                <i class="fas fa-users me-2"></i>My Students
+                            <a class="nav-link" href="#students" data-bs-toggle="tab">
+                                <i class="fas fa-users me-2"></i>Students
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#manage_grades" data-bs-toggle="tab">
-                                <i class="fas fa-star me-2"></i>Manage Grades
+                            <a class="nav-link" href="grades.php">
+                                <i class="fas fa-marks me-2"></i>Grades
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#my_classrooms" data-bs-toggle="tab">
-                                <i class="fas fa-school me-2"></i>My Classrooms
+                            <a class="nav-link" href="classroom.php">
+                                <i class="fas fa-door-open me-2"></i>Classrooms
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">
-                                <i class="fas fa-power-off me-2"></i>Logout
+                                <i class="fas fa-arrow-right-from-bracket me-2"></i>Logout
                             </a>
                         </li>
                     </ul>
@@ -117,7 +121,7 @@ $students = $students_stmt->fetchAll();
                                                 <h4><?php echo count($teacher_classrooms); ?></h4>
                                                 <p>My Classrooms</p>
                                             </div>
-                                            <i class="fas fa-school fa-2x"></i>
+                                            <i class="fas fa-chalkboard fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +134,7 @@ $students = $students_stmt->fetchAll();
                                                 <h4><?php echo count($students); ?></h4>
                                                 <p>Total Students</p>
                                             </div>
-                                            <i class="fas fa-users fa-2x"></i>
+                                            <i class="fas fa-user-graduate fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +147,7 @@ $students = $students_stmt->fetchAll();
                                                 <h4>0</h4>
                                                 <p>Grades Assigned</p>
                                             </div>
-                                            <i class="fas fa-star fa-2x"></i>
+                                            <i class="fas fa-edit fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>

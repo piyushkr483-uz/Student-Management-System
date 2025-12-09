@@ -105,10 +105,10 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);">
         <div class="container">
             <a class="navbar-brand" href="teacher.php">
-                <i class="fas fa-chalkboard-teacher"></i> Teacher Portal
+                <i class="fas fa-person-chalkboard"></i> Instructor Portal
             </a>
             <div class="navbar-nav ms-auto">
                 <span class="navbar-text me-3">
@@ -133,7 +133,7 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>
-                        <i class="fas fa-people-group"></i> 
+                        <i class="fas fa-users"></i> 
                         Students in <?php echo $teacher_classrooms[array_search($_GET['classroom_id'], array_column($teacher_classrooms, 'id'))]['name']; ?>
                     </h4>
                     <a href="classroom.php" class="btn btn-secondary">Back to Classrooms</a>
@@ -177,7 +177,7 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4><i class="fas fa-circle-plus"></i> Create New Classroom</h4>
+                            <h4><i class="fas fa-plus-circle"></i> Create New Classroom</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST">
@@ -190,7 +190,7 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
                                     <textarea class="form-control" name="description" rows="3"></textarea>
                                 </div>
                                 <button type="submit" name="create_classroom" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> Create Classroom
+                                    <i class="fas fa-save"></i> Create Classroom
                                 </button>
                             </form>
                         </div>
@@ -200,7 +200,7 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4><i class="fas fa-user-check"></i> Add Student to Classroom</h4>
+                            <h4><i class="fas fa-user-plus"></i> Add Student to Classroom</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST">
@@ -225,7 +225,7 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
                                     </select>
                                 </div>
                                 <button type="submit" name="add_student" class="btn btn-success">
-                                    <i class="fas fa-plus"></i> Add Student
+                                    <i class="fas fa-user-plus"></i> Add Student
                                 </button>
                             </form>
                         </div>
@@ -238,7 +238,7 @@ if (isset($_GET['view_students']) && isset($_GET['classroom_id'])) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4><i class="fas fa-school"></i> My Classrooms</h4>
+                            <h4><i class="fas fa-chalkboard"></i> My Classrooms</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Student Grades Management System — Project Report</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;color:#222;line-height:1.5;margin:24px}
+    h1,h2,h3{color:#111}
+    pre{background:#f5f7fb;padding:12px;border-radius:6px;overflow:auto}
+    .content img{max-width:100%;height:auto;border:1px solid #e6eef8;padding:6px;background:#fff}
+    .section{margin-bottom:20px}
+    .muted{color:#666}
+    .kbd{font-family:monospace;background:#eee;padding:2px 6px;border-radius:4px}
+  </style>
+</head>
+<body>
+  <h1>Student Grades Management System — Project Report</h1>
+  <p class="muted">Location: <span class="kbd">c:\xampp\htdocs\student-grades-management-system</span></p>
+  <p class="muted">Date: 2025-11-28</p>
+
+  <div class="section">
+    <h2>Summary</h2>
+    <p>A lightweight PHP + MySQL web application for managing users (admin/teacher/student), classrooms, subjects, and student grades. Built using plain PHP, PDO for DB access, and Bootstrap for UI.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contents</h2>
+    <ul>
+      <li>Overview</li>
+      <li>Features</li>
+      <li>Architecture</li>
+      <li>Database Schema (summary)</li>
+      <li>Key Files / Pages</li>
+      <li>Installation / Setup</li>
+      <li>Usage (demo)</li>
+      <li>Security & Validation</li>
+      <li>Testing Checklist</li>
+      <li>Future Improvements</li>
+      <li>References</li>
+      <li>Screenshots</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>Web app for teachers to assign grades, students to view grades, and admins to manage users, subjects, and classrooms.</p>
+    <p>Roles supported: <code>admin</code>, <code>teacher</code>, <code>student</code>.</p>
+    <p>Uses PDO with prepared statements and password hashing.</p>
+  </div>
+
+  <div class="section">
+    <h2>Features</h2>
+    <ul>
+      <li>Authentication and role-based dashboards.</li>
+      <li>Admin: manage users, subjects, classrooms.</li>
+      <li>Teacher: manage classrooms, students, add/edit/delete grades, grade statistics.</li>
+      <li>Student: view grades, performance charts, grade distributions.</li>
+      <li>CRUD operations for users, subjects, classrooms, and grades.</li>
+      <li>Basic UI built with Bootstrap and Font Awesome.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Architecture</h2>
+    <ul>
+      <li>Language: PHP (server-side), basic JS for UI interactions and Chart.js (small usage in student view).</li>
+      <li>Database: MySQL/MariaDB (SQL dump provided: <span class="kbd">student_grade_management.sql</span>).</li>
+      <li>DB access via PDO in <span class="kbd">includes/conn.php</span>.</li>
+      <li>Shared helper functions in <span class="kbd">includes/functions.php</span> (auth helpers, helpers for deleting related records, grade utilities).</li>
+      <li>File-based MVC-ish layout: each role has its main page (<span class="kbd">admin.php</span>, <span class="kbd">teacher.php</span>, <span class="kbd">students.php</span>) and common pages (<span class="kbd">index.php</span>, <span class="kbd">grades.php</span>, <span class="kbd">classroom.php</span>).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Database Schema (summary)</h2>
+    <ul>
+      <li><strong>users</strong> (id, username, password, email, role, first_name, last_name, created_at)</li>
+      <li><strong>subjects</strong> (id, name, code, description)</li>
+      <li><strong>classrooms</strong> (id, name, description, teacher_id, created_at)</li>
+      <li><strong>classroom_students</strong> (id, classroom_id, student_id, enrolled_at)</li>
+      <li><strong>grades</strong> (id, student_id, subject_id, classroom_id, teacher_id, grade (decimal), grade_type ENUM, remarks, graded_at)</li>
+    </ul>
+    <p class="muted">Notes: Foreign keys link grades -> users/subjects/classrooms and classroom_students -> users/classrooms. Passwords are hashed in sample SQL (bcrypt hashes present).</p>
+  </div>
+
+  <div class="section">
+    <h2>Key Files / Pages</h2>
+    <ul>
+      <li><span class="kbd">index.php</span> — Login page and authentication handling.</li>
+      <li><span class="kbd">admin.php</span> — Admin dashboard and management (users, subjects, classrooms).</li>
+      <li><span class="kbd">teacher.php</span> — Teacher dashboard; lists classrooms and students.</li>
+      <li><span class="kbd">grades.php</span> — Grade management UI (adding/deleting grades for teachers; viewing for students).</li>
+      <li><span class="kbd">students.php</span> — Student dashboard showing grades, statistics, and charts.</li>
+      <li><span class="kbd">classroom.php</span> — Classroom details / management (exists in repo).</li>
+      <li><span class="kbd">includes/conn.php</span> — PDO connection and <code>session_start()</code>.</li>
+      <li><span class="kbd">includes/functions.php</span> — Helper functions (auth checks, CRUD helpers, grading utilities).</li>
+      <li><span class="kbd">student_grade_management.sql</span> — SQL dump with schema and example data.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Installation / Setup</h2>
+    <ol>
+      <li>Ensure XAMPP (Apache + MySQL) is installed and running.</li>
+      <li>Copy the project to your web root (already at <span class="kbd">c:\xampp\htdocs\student-grades-management-system</span>).</li>
+      <li>Create the database and import the SQL dump (use phpMyAdmin or MySQL CLI to import <span class="kbd">student_grade_management.sql</span>).</li>
+      <li>Confirm DB credentials in <span class="kbd">includes/conn.php</span> (host: <code>localhost</code>, dbname: <code>student_grade_management</code>, username: <code>root</code>, password: empty by default).</li>
+      <li>Start Apache and MySQL (XAMPP Control Panel). Browse to <a href="./">http://localhost/student-grades-management-system/</a>.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Demo Accounts</h2>
+    <ul>
+      <li>Admin: <span class="kbd">admin</span> / <span class="kbd">admin123</span></li>
+      <li>Teacher: <span class="kbd">teacher</span> / <span class="kbd">teacher123</span></li>
+      <li>Student: <span class="kbd">student</span> / <span class="kbd">student123</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Usage</h2>
+    <p>Login with a demo account to see role-specific dashboard. Admin can add subjects/users/classrooms. Teacher can add grades in <span class="kbd">grades.php</span>. Student can view grades and performance.</p>
+  </div>
+
+  <div class="section">
+    <h2>Security & Validation</h2>
+    <ul>
+      <li>Passwords: stored hashed (bcrypt via <code>password_hash()</code> in code; sample SQL includes hashed passwords).</li>
+      <li>Database access: PDO with prepared statements used across the app (protects from SQL injection where prepared statements are used).</li>
+      <li>Session-based role checks: helper <code>requireRole()</code> and <code>hasRole()</code> in <span class="kbd">includes/functions.php</span>.</li>
+    </ul>
+    <p class="muted">Potential security notes: No CSRF tokens visible on forms — consider adding CSRF protection for POST forms. Input validation on IDs and parameters should be enforced. Consider stronger password policies and audit logging.</p>
+  </div>
+
+  <div class="section">
+    <h2>Testing Checklist (suggested manual tests)</h2>
+    <ul>
+      <li>Authentication: valid and invalid credentials, session behavior, redirection per role.</li>
+      <li>Role enforcement: try teacher/student/admin pages when logged out or with wrong role.</li>
+      <li>CRUD operations: create/update/delete users, subjects, classrooms, grades; verify related cascade operations.</li>
+      <li>Data validation: attempt invalid grade values and missing fields.</li>
+      <li>UI: verify tables, charts, and responsiveness (Bootstrap).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Future Improvements</h2>
+    <ul>
+      <li>Add CSRF protection and server-side input sanitization libraries.</li>
+      <li>Add unit/integration tests (PHPUnit) for core functions.</li>
+      <li>Add pagination for large tables and audit logs for changes.</li>
+      <li>Improve UX with AJAX and export features (CSV/PDF).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>References</h2>
+    <ul>
+      <li>SQL dump: <span class="kbd">student_grade_management.sql</span></li>
+      <li>Connection: <span class="kbd">includes/conn.php</span></li>
+      <li>Helpers: <span class="kbd">includes/functions.php</span></li>
+      <li>Pages: <span class="kbd">index.php</span>, <span class="kbd">admin.php</span>, <span class="kbd">teacher.php</span>, <span class="kbd">students.php</span>, <span class="kbd">grades.php</span>, <span class="kbd">classroom.php</span></li>
+    </ul>
+  </div>
+
+  <div class="section content">
+    <h2>Screenshots</h2>
+    <p>Below are placeholder screenshots for key pages. Replace with real screenshots in <span class="kbd">screenshots/</span> for updated visuals.</p>
+
+    <h3>Login page</h3>
+    <img src="screenshots/login.svg" alt="Login screenshot">
+
+    <h3>Admin dashboard (Users / Subjects / Classrooms)</h3>
+    <img src="screenshots/admin_dashboard.svg" alt="Admin dashboard screenshot">
+
+    <h3>Teacher dashboard (Classrooms & Students)</h3>
+    <img src="screenshots/teacher_dashboard.svg" alt="Teacher dashboard screenshot">
+
+    <h3>Student dashboard (Grades & Performance)</h3>
+    <img src="screenshots/student_dashboard.svg" alt="Student dashboard screenshot">
+
+    <h3>Manage Grades page (Add / Delete / View)</h3>
+    <img src="screenshots/grades_page.svg" alt="Grades page screenshot">
+
+    <h3>Database schema (summary)</h3>
+    <img src="screenshots/db_schema.svg" alt="DB schema screenshot">
+  </div>
+
+  <hr>
+  <p>If you want me to produce a PDF automatically, I can attempt to run `pandoc` or `wkhtmltopdf` if you install them, or I can use a headless browser if Chrome/Edge is available on this machine. None of those tools were found on the system, so I created this HTML file for manual printing.</p>
+  <p class="muted">How to save as PDF: open <span class="kbd">PROJECT_REPORT.html</span> in your browser and choose Print → Save as PDF.</p>
+</body>
+</html>

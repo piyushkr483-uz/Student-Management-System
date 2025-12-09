@@ -48,28 +48,33 @@ foreach ($grades as $grade) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .sidebar {
-            background: linear-gradient(135deg, #4a6fa5 0%, #7b68a6 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
             color: white;
             min-height: 100vh;
             padding: 0;
         }
         .sidebar .nav-link {
-            color: white;
+            color: rgba(255,255,255,0.85);
             padding: 1rem 1.5rem;
             border-left: 4px solid transparent;
+            transition: all 0.2s ease;
         }
         .sidebar .nav-link:hover, .sidebar .nav-link.active {
-            background: rgba(255,255,255,0.1);
-            border-left-color: white;
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border-left-color: #60a5fa;
         }
         .grade-progress {
             height: 10px;
+            border-radius: 4px;
         }
         .stat-card {
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            border: none;
         }
         .stat-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -81,29 +86,29 @@ foreach ($grades as $grade) {
                 <div class="d-flex flex-column p-3">
                     <div class="text-center mb-4">
                         <i class="fas fa-graduation-cap fa-2x mb-2"></i>
-                        <h5>Student Portal</h5>
+                        <h5 style="margin-bottom: 0.5rem; font-weight: 600;">Student Portal</h5>
                         <small><?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></small>
                     </div>
                     
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
-                                <i class="fas fa-chart-line me-2"></i>Dashboard
+                                <i class="fas fa-home me-2"></i>Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#grades" data-bs-toggle="tab">
-                                <i class="fas fa-star me-2"></i>My Grades
+                                <i class="fas fa-list-check me-2"></i>Grades
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#performance" data-bs-toggle="tab">
-                                <i class="fas fa-chart-pie me-2"></i>Performance
+                                <i class="fas fa-chart-line me-2"></i>Performance
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">
-                                <i class="fas fa-power-off me-2"></i>Logout
+                                <i class="fas fa-arrow-right-from-bracket me-2"></i>Logout
                             </a>
                         </li>
                     </ul>
@@ -143,7 +148,7 @@ foreach ($grades as $grade) {
                                                 <h4><?php echo number_format($average_grade, 2); ?></h4>
                                                 <p>Average Grade</p>
                                             </div>
-                                            <i class="fas fa-percent fa-2x"></i>
+                                            <i class="fas fa-calculator fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +161,7 @@ foreach ($grades as $grade) {
                                                 <h4><?php echo calculateGradePoint($average_grade); ?></h4>
                                                 <p>Overall Grade</p>
                                             </div>
-                                            <i class="fas fa-medal fa-2x"></i>
+                                            <i class="fas fa-award fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>

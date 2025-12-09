@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="40" y="40" font-family="Arial" font-size="24" fill="#222">Database Schema (ER) — Key Tables</text>
+
+  <g transform="translate(60,80)">
+    <rect width="240" height="120" rx="8" fill="#f8fbff" stroke="#cfe3ff"/>
+    <text x="20" y="30" font-size="16" fill="#333">users</text>
+    <text x="20" y="60" font-size="12" fill="#555">id, username, password, role, first_name, last_name</text>
+  </g>
+
+  <g transform="translate(360,80)">
+    <rect width="260" height="120" rx="8" fill="#fff8f6" stroke="#f9d6c3"/>
+    <text x="20" y="30" font-size="16" fill="#333">classrooms</text>
+    <text x="20" y="60" font-size="12" fill="#555">id, name, description, teacher_id</text>
+  </g>
+
+  <g transform="translate(660,80)">
+    <rect width="260" height="120" rx="8" fill="#f6fff6" stroke="#c6f0d0"/>
+    <text x="20" y="30" font-size="16" fill="#333">grades</text>
+    <text x="20" y="60" font-size="12" fill="#555">id, student_id, subject_id, classroom_id, teacher_id, grade</text>
+  </g>
+
+  <g transform="translate(360,240)">
+    <rect width="260" height="80" rx="8" fill="#fff9f6" stroke="#f9e7c8"/>
+    <text x="20" y="30" font-size="16" fill="#333">subjects</text>
+    <text x="20" y="55" font-size="12" fill="#555">id, name, code</text>
+  </g>
+
+  <g transform="translate(60,240)">
+    <rect width="260" height="80" rx="8" fill="#f6f8ff" stroke="#dfe9ff"/>
+    <text x="20" y="30" font-size="16" fill="#333">classroom_students</text>
+    <text x="20" y="55" font-size="12" fill="#555">id, classroom_id, student_id</text>
+  </g>
+</svg>

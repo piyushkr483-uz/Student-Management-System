@@ -181,31 +181,34 @@ $classrooms = $pdo->query("SELECT c.*, u.first_name, u.last_name
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .sidebar {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
             min-height: 100vh;
             padding: 0;
         }
         .sidebar .nav-link {
-            color: white;
+            color: rgba(255,255,255,0.85);
             padding: 1rem 1.5rem;
             border-left: 4px solid transparent;
+            transition: all 0.2s ease;
         }
         .sidebar .nav-link:hover, .sidebar .nav-link.active {
-            background: rgba(255,255,255,0.1);
-            border-left-color: white;
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border-left-color: #3b82f6;
         }
         .stat-card {
             border-radius: 10px;
             border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
         }
         .stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
         }
         .modal-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
         .password-toggle {
@@ -213,7 +216,7 @@ $classrooms = $pdo->query("SELECT c.*, u.first_name, u.last_name
             transition: color 0.3s;
         }
         .password-toggle:hover {
-            color: #2a5298 !important;
+            color: #667eea !important;
         }
     </style>
 </head>
@@ -224,9 +227,9 @@ $classrooms = $pdo->query("SELECT c.*, u.first_name, u.last_name
             <div class="col-md-3 col-lg-2 sidebar">
                 <div class="d-flex flex-column p-3">
                     <div class="text-center mb-4">
-                        <i class="fas fa-graduation-cap fa-2x mb-2"></i>
-                        <h5>Grade Management</h5>
-                        <small>Administrator Panel</small>
+                        <i class="fas fa-sliders fa-2x mb-2"></i>
+                        <h5 style="margin-bottom: 0.5rem; font-weight: 600;">Admin Control</h5>
+                        <small>System Management</small>
                     </div>
                     
                     <ul class="nav nav-pills flex-column">
@@ -236,23 +239,23 @@ $classrooms = $pdo->query("SELECT c.*, u.first_name, u.last_name
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#manage_users" data-bs-toggle="tab">
-                                <i class="fas fa-person-booth me-2"></i>Manage Users
+                            <a class="nav-link" href="#users" data-bs-toggle="tab">
+                                <i class="fas fa-people-group me-2"></i>Users
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#subjects" data-bs-toggle="tab">
-                                <i class="fas fa-book me-2"></i>Subjects
+                                <i class="fas fa-book-open me-2"></i>Subjects
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#classrooms" data-bs-toggle="tab">
-                                <i class="fas fa-chalkboard me-2"></i>Classrooms
+                                <i class="fas fa-building me-2"></i>Classrooms
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">
-                                <i class="fas fa-power-off me-2"></i>Logout
+                                <i class="fas fa-arrow-right-from-bracket me-2"></i>Logout
                             </a>
                         </li>
                     </ul>

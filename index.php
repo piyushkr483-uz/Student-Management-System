@@ -39,19 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         .login-container {
             min-height: 100vh;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .login-card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             padding: 2.5rem;
             width: 100%;
-            max-width: 400px;
-            border-top: 4px solid #2a5298;
+            max-width: 420px;
         }
         .logo {
             text-align: center;
@@ -59,29 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .logo i {
             font-size: 3rem;
-            color: #2a5298;
+            color: #1e40af;
             margin-bottom: 1rem;
         }
-        .logo h3 {
-            color: #1e3c72;
+        .login-card h3 {
+            color: #0f172a;
             font-weight: 600;
-        }
-        .btn-primary {
-            background-color: #2a5298;
-            border-color: #2a5298;
-        }
-        .btn-primary:hover {
-            background-color: #1e3c72;
-            border-color: #1e3c72;
-        }
-        .input-group-text {
-            background-color: #f8f9fa;
-            border-color: #dee2e6;
-            color: #2a5298;
-        }
-        .form-control:focus {
-            border-color: #2a5298;
-            box-shadow: 0 0 0 0.2rem rgba(42, 82, 152, 0.25);
         }
     </style>
 </head>
@@ -89,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="login-container">
         <div class="login-card">
             <div class="logo">
-                <i class="fas fa-book"></i>
-                <h3>Student Grades Management</h3>
-                <p class="text-muted">Sign in to your account</p>
+                <i class="fas fa-book-open"></i>
+                <h3>Grades Hub</h3>
+                <p class="text-muted">Secure Academic Portal</p>
             </div>
             
             <?php if (isset($error)): ?>
@@ -102,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="mb-3">
                     <label class="form-label">Username</label>
                     <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
                         <input type="text" class="form-control" name="username" required>
                     </div>
                 </div>
@@ -114,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-3">
-                    <i class="fas fa-arrow-right"></i> Sign In
+                    <i class="fas fa-sign-in-alt"></i> Sign In
                 </button>
             </form>
             

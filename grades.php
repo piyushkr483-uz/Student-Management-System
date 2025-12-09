@@ -100,10 +100,10 @@ if ($total_grades > 0) {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);">
         <div class="container">
             <a class="navbar-brand" href="teacher.php">
-                <i class="fas fa-star"></i> Grade Management
+                <i class="fas fa-marks"></i> Grade Management
             </a>
             <div class="navbar-nav ms-auto">
                 <span class="navbar-text me-3">
@@ -190,8 +190,8 @@ if ($total_grades > 0) {
                                 <label class="form-label">Remarks</label>
                                 <textarea class="form-control" name="remarks" rows="2"></textarea>
                             </div>
-                            <button type="submit" name="add_grade" class="btn btn-primary">
-                                <i class="fas fa-plus"></i> Add Grade
+                            <button type="submit" name="add_grade" class="btn" style="background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%); color: white;">
+                                <i class="fas fa-floppy-disk"></i> Add Grade
                             </button>
                         </form>
                     </div>
@@ -201,7 +201,7 @@ if ($total_grades > 0) {
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4><i class="fas fa-chart-column"></i> Grade Statistics</h4>
+                        <h4><i class="fas fa-chart-simple"></i> Grade Statistics</h4>
                     </div>
                     <div class="card-body">
                         <div class="row text-center">
@@ -229,7 +229,7 @@ if ($total_grades > 0) {
 
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h4><i class="fas fa-circle-info"></i> Grading Scale</h4>
+                        <h4><i class="fas fa-list-ol"></i> Grading Scale</h4>
                     </div>
                     <div class="card-body">
                         <table class="table table-sm">
@@ -249,7 +249,7 @@ if ($total_grades > 0) {
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4><i class="fas fa-list-check"></i> Recent Grades</h4>
+                        <h4><i class="fas fa-receipt"></i> Recent Grades</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
